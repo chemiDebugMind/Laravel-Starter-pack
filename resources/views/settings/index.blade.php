@@ -25,7 +25,32 @@
         <div class="card-body">
           <div class="tab-content" id="custom-tabs-three-tabContent">
             <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
+              <div class="container">
+                <form action="{{ route('globalSettingUpdate') }}" method="post" enctype="multipart/form-data">
+                  @method('PUT')
+                  @csrf
+                  <div class="form-group row">
+                    <label for="appName" class="col-sm-1-12 col-form-label">App name</label>
+                    <div class="col-sm-1-12">
+                      <input type="text" class="form-control" name="appName" id="inputName" placeholder="" value="{{ settings()->get('app_name') }}">
+                      <small id="helpId" class="text-muted">Name of the App </small>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="appImage" class="col-sm-1-12 col-form-label">App Logo</label>
+                    <div class="col-sm-1-12">
+                      <img src="{{ url('/storage/settings/'.settings()->get('app_logo')) }}" alt="" style="max-width: 10%" >
+                      <input type="file" class="form-control" name="applogo" id="inputLogo" placeholder="" value="">
+                      <small id="helpId" class="text-muted">App Logo </small>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-10">
+                      <button type="submit" class="btn btn-primary">Action</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
             <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
                <div class="row">

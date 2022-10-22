@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GlobalSettingController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Models\Article;
@@ -40,6 +41,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles',RoleController::class);
     Route::resource('categories',CategoryController::class);
     Route::resource('articles',ArticleController::class);
-
+    Route::put('/global-setting-update',[GlobalSettingController::class, 'update'])->name('globalSettingUpdate');
 
 });

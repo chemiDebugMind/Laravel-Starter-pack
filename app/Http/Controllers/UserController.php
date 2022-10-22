@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Spatie\Valuestore\Valuestore;
 
 class UserController extends Controller
 {
@@ -23,7 +24,6 @@ class UserController extends Controller
         $users = User::paginate(5);
         $roles = Role::paginate(5);
         $permission = Permission::get();
-
         return view('settings.index',compact('users','roles','permission'));
         
     }
