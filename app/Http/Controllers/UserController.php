@@ -14,6 +14,11 @@ use Spatie\Valuestore\Valuestore;
 
 class UserController extends Controller
 {
+
+    function __construct()
+    {
+         $this->middleware('permission:app-setting')->except('update');
+    }
     /**
      * Display a listing of the resource.
      *

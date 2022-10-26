@@ -26,6 +26,7 @@
           <div class="tab-content" id="custom-tabs-three-tabContent">
             <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
               <div class="container">
+                @can('app-setting')
                 <form action="{{ route('globalSettingUpdate') }}" method="post" enctype="multipart/form-data">
                   @method('PUT')
                   @csrf
@@ -46,10 +47,12 @@
                   </div>
                   <div class="form-group row">
                     <div class="offset-sm-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">Action</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                   </div>
-                </form>
+                </form>    
+                @endcan
+               
               </div>
             </div>
             <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">

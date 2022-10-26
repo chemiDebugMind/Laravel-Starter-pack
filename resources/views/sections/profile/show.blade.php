@@ -334,7 +334,7 @@
                     <!-- /.tab-pane -->
   
                     <div class="active tab-pane" id="settings">
-                      <form action="{{ route('users.update',auth()->user()->id) }}" method="post">
+                      <form action="{{ route('updateProfile',auth()->user()->id) }}" method="post">
                         @csrf
                        @method('PUT')
                           {{-- Name field --}}
@@ -411,31 +411,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                {{-- Select role --}}
-                                <div class="input-group mb-3">
-                                    <select class="form-control  @error('roles') is-invalid @enderror" name="roles" id="">
-                                        <option value="">Select Role</option>                                                                                                      
-                                        @foreach ($roles as $role)
-                                            @if (auth()->user()->hasRole($role->name))
-                                                <option value="{{ $role->id }}" selected>{{ $role->name}}</option>                                                                                                       
-                                            @else
-                                                <option value="{{ $role->id }}" >{{ $role->name}}</option>                                                                                                      
-                                            @endif
-                                        @endforeach
-                                    </select>
-                    
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <span class="fas fa-tasks {{ config('adminlte.classes_auth_icon', '') }}"></span>
-                                        </div>
-                                    </div>
-                    
-                                    @error('roles')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                                
                     
                                 {{-- Register button --}}
                                 <button type="submit" class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
